@@ -1221,6 +1221,7 @@ A ,SHAPE ", stretched across your path like the skin of a drum." CR>
 
 <ROUTINE CANT-SAVE? ("AUX" OBJ NXT X)
 	 <COND (<T? ,CHOKE>
+		<MUMBLAGE ,SKELETON>
 		<RTRUE>)
 	       (<SET OBJ <FIRST? ,HERE>>
 		<REPEAT ()
@@ -4021,8 +4022,9 @@ A ,SHAPE ", stretched across your path like the skin of a drum." CR>
 	(DESC "foo")
 	(SDESC DESCRIBE-MONEY)
 	(FLAGS NODESC NOARTICLE NOALL)
-	(SYNONYM MONEY ZORKMIDS ZORKMID ZM CASH LOOT ASSETS COINS COIN)
-	(ADJECTIVE INTNUM MY)
+	(SYNONYM MONEY ZORKMIDS ZORKMID ZM CASH LOOT
+	         ASSETS COINS COIN CREDIT LINE)
+	(ADJECTIVE INTNUM MY PERSONAL CREDIT)
 	(ACTION MONEY-F)>
 
 <GLOBAL LOOT:NUMBER 1>
@@ -5052,6 +5054,7 @@ A ,SHAPE ", stretched across your path like the skin of a drum." CR>
 	 <SPLIT 22>
 	 <TO-TOP-WINDOW>
 	 <DO-CURSET .TOP <+ .LMARGIN 18>>
+	 <COLOR ,FORE ,BGND>
 	 <TELL "Display Settings">
 	 
 	 <SET LINE 0>
@@ -5194,7 +5197,10 @@ A ,SHAPE ", stretched across your path like the skin of a drum." CR>
 					   (<EQUAL? ,PRIOR ,SHOWING-ROOM>
 					    <SETG PRIOR ,SHOWING-INV>
 					    <SETG IN-DBOX ,SHOWING-INV>)
-					   (<EQUAL? ,PRIOR ,SHOWING-INV>
+					   (<AND <EQUAL? ,PRIOR
+							 ,SHOWING-INV>
+						 <NOT <EQUAL? ,STAT-ROUTINE
+							      ,BAR-NUMBER>>>
 					    <SETG PRIOR ,SHOWING-STATS>
 					    <SETG IN-DBOX ,SHOWING-STATS>)
 					   (T
@@ -5205,14 +5211,20 @@ A ,SHAPE ", stretched across your path like the skin of a drum." CR>
 					    <SETG VERBOSITY 2>)>)
 				    (<EQUAL? .LINE 5>
 				     <COND (<ZERO? ,PRIOR>
-					    <SETG PRIOR ,SHOWING-STATS>
-					    <SETG IN-DBOX ,SHOWING-STATS>)
+					    <SETG PRIOR ,SHOWING-STATS>	   
+					    <SETG IN-DBOX ,SHOWING-STATS>
+					    <COND (<EQUAL? ,STAT-ROUTINE
+							   ,BAR-NUMBER>
+						   <SETG PRIOR ,SHOWING-INV>
+					           <SETG IN-DBOX
+							 ,SHOWING-INV>)>)
 					   (<EQUAL? ,PRIOR ,SHOWING-ROOM>
 					    <SETG PRIOR 0>)
 					   (<EQUAL? ,PRIOR ,SHOWING-INV>
 					    <SETG PRIOR ,SHOWING-ROOM>
 					    <SETG IN-DBOX ,SHOWING-ROOM>)
-					   (T
+					   (<NOT <EQUAL? ,STAT-ROUTINE
+							 ,BAR-NUMBER>>
 					    <SETG PRIOR ,SHOWING-INV>
 					    <SETG IN-DBOX ,SHOWING-INV>)>)>)>
 		       <RETURN>)>
@@ -5225,120 +5237,136 @@ A ,SHAPE ", stretched across your path like the skin of a drum." CR>
 	 <DO-CURSET <+ <* .LINE 2> .TOP> .X>
 	 <HLIGHT ,H-NORMAL>
 	 <HLIGHT ,H-MONO>
-	 <COLOR ,GCOLOR ,BGND>
+	 <COLOR ,FORE ,BGND>
 	 <COND (<T? .HL>
-		<HLIGHT ,H-INVERSE>
-		<COND (<AND <T? ,COLORS?>
-			    <NOT <EQUAL? ,FORE ,GCOLOR>>>
-		       <COLOR ,FORE ,BGND>)>)
-	       (<AND <T? ,COLORS?>
-		     <NOT <EQUAL? ,FORE ,GCOLOR>>>
 		<HLIGHT ,H-INVERSE>)>
-	 <TO-GCOLOR <GET ,SNAMES .LINE>>
+	 <PRINT <GET ,SNAMES .LINE>>
+	 <HLIGHT ,H-NORMAL>
+	 <HLIGHT ,H-MONO>
+	 <PRINTC ,SP>
 	 <COND (<EQUAL? .LINE 7 8>
 		<RTRUE>)
 	       (<ZERO? .LINE>
 		<COND (<T? ,DMODE>
-		       <HLIGHT ,H-INVERSE>
-		       <COLOR ,FORE ,BGND>)>
-		<TO-GCOLOR " Enhanced ">
+		       <HLIGHT ,H-INVERSE>)>
+		<TELL " Enhanced ">
+		<HLIGHT ,H-NORMAL>
+		<HLIGHT ,H-MONO>
+		<PRINTC ,SP>
 		<COND (<ZERO? ,DMODE>
-		       <HLIGHT ,H-INVERSE>
-		       <COLOR ,FORE ,BGND>)>
-		<TO-GCOLOR " Standard ">
+		       <HLIGHT ,H-INVERSE>)>
+		<TELL " Standard ">
+		<HLIGHT ,H-NORMAL>
+		<HLIGHT ,H-MONO>
 		<RTRUE>)
 	       (<EQUAL? .LINE 1>
 		<COND (<ZERO? ,VERBOSITY>
-		       <HLIGHT ,H-INVERSE>
-		       <COLOR ,FORE ,BGND>)>
-		<TO-GCOLOR " Superbrief ">
+		       <HLIGHT ,H-INVERSE>)>
+		<TELL " Superbrief ">
+		<HLIGHT ,H-NORMAL>
+		<HLIGHT ,H-MONO>
+		<PRINTC ,SP>
 		<COND (<EQUAL? ,VERBOSITY 1>
-		       <HLIGHT ,H-INVERSE>
-		       <COLOR ,FORE ,BGND>)>
-		<TO-GCOLOR " Brief ">
+		       <HLIGHT ,H-INVERSE>)>
+		<TELL " Brief ">
+		<HLIGHT ,H-NORMAL>
+		<HLIGHT ,H-MONO>
+		<PRINTC ,SP>
 		<COND (<EQUAL? ,VERBOSITY 2>
-		       <HLIGHT ,H-INVERSE>
-		       <COLOR ,FORE ,BGND>)>
-		<TO-GCOLOR " Verbose ">
+		       <HLIGHT ,H-INVERSE>)>
+		<TELL " Verbose ">
+		<HLIGHT ,H-NORMAL>
+		<HLIGHT ,H-MONO>
 		<RTRUE>)
 	       (<EQUAL? .LINE 2>
 		<SET X <BAND <LOWCORE FLAGS> 1>>
 		<COND (<ZERO? .X>	     
-		       <HLIGHT ,H-INVERSE>
-		       <COLOR ,FORE ,BGND>)>
-		<TO-GCOLOR " Off ">
+		       <HLIGHT ,H-INVERSE>)>
+		<TELL " Off ">
+		<HLIGHT ,H-NORMAL>
+		<HLIGHT ,H-MONO>
+		<PRINTC ,SP>
 		<COND (<T? .X>
-		       <HLIGHT ,H-INVERSE>
-		       <COLOR ,FORE ,BGND>)>
-		<TO-GCOLOR " On ">
+		       <HLIGHT ,H-INVERSE>)>
+		<TELL " On ">
+		<HLIGHT ,H-NORMAL>
+		<HLIGHT ,H-MONO>
 		<RTRUE>)
 	       (<EQUAL? .LINE 3>
 		<COND (<ZERO? ,SAY-STAT>
-		       <HLIGHT ,H-INVERSE>
-		       <COLOR ,FORE ,BGND>)>
-		<TO-GCOLOR " Off ">
+		       <HLIGHT ,H-INVERSE>)>
+		<TELL " Off ">
+		<HLIGHT ,H-NORMAL>
+		<HLIGHT ,H-MONO>
+		<PRINTC ,SP>
 		<COND (<T? ,SAY-STAT>
-		       <HLIGHT ,H-INVERSE>
-		       <COLOR ,FORE ,BGND>)>
-		<TO-GCOLOR " On ">
+		       <HLIGHT ,H-INVERSE>)>
+		<TELL " On ">
+		<HLIGHT ,H-NORMAL>
+		<HLIGHT ,H-MONO>
 		<RTRUE>)
 	       (<EQUAL? .LINE 4>
 		<COND (<ZERO? ,DMODE>)
 		      (<EQUAL? ,MAP-ROUTINE ,CLOSE-MAP>
-		       <HLIGHT ,H-INVERSE>
-		       <COLOR ,FORE ,BGND>)>
-		<TO-GCOLOR " Normal ">
+		       <HLIGHT ,H-INVERSE>)>
+		<TELL " Normal ">
+		<HLIGHT ,H-NORMAL>
+		<HLIGHT ,H-MONO>
+		<PRINTC ,SP>
 		<COND (<ZERO? ,DMODE>)
 		      (<EQUAL? ,MAP-ROUTINE ,FAR-MAP>
-		       <HLIGHT ,H-INVERSE>
-		       <COLOR ,FORE ,BGND>)>
-		<TO-GCOLOR " Wide ">)
+		       <HLIGHT ,H-INVERSE>)>
+		<TELL " Wide ">
+		<HLIGHT ,H-NORMAL>
+		<HLIGHT ,H-MONO>
+		<RTRUE>)
 	       (<EQUAL? .LINE 5>
 		<COND (<ZERO? ,DMODE>)
 		      (<ZERO? ,PRIOR>
-		       <HLIGHT ,H-INVERSE>
-		       <COLOR ,FORE ,BGND>)>
-		<TO-GCOLOR " Off ">
+		       <HLIGHT ,H-INVERSE>)>
+		<TELL " Off ">
+		<HLIGHT ,H-NORMAL>
+		<HLIGHT ,H-MONO>
+		<PRINTC ,SP>
 		<COND (<ZERO? ,DMODE>)
 		      (<EQUAL? ,PRIOR ,SHOWING-ROOM>
-		       <HLIGHT ,H-INVERSE>
-		       <COLOR ,FORE ,BGND>)>
-		<TO-GCOLOR " Room ">
+		       <HLIGHT ,H-INVERSE>)>
+		<TELL " Room ">
+		<HLIGHT ,H-NORMAL>
+		<HLIGHT ,H-MONO>
+		<PRINTC ,SP>
 		<COND (<ZERO? ,DMODE>)
 		      (<EQUAL? ,PRIOR ,SHOWING-INV>
-		       <HLIGHT ,H-INVERSE>
-		       <COLOR ,FORE ,BGND>)>
-		<TO-GCOLOR " Inventory ">
-		<COND (<ZERO? ,DMODE>)
-		      (<EQUAL? ,PRIOR ,SHOWING-STATS>
-		       <HLIGHT ,H-INVERSE>
-		       <COLOR ,FORE ,BGND>)>
-		<TO-GCOLOR " Status ">
+		       <HLIGHT ,H-INVERSE>)>
+		<TELL " Inventory ">
+		<HLIGHT ,H-NORMAL>
+		<HLIGHT ,H-MONO>
+		<COND (<NOT <EQUAL? ,STAT-ROUTINE ,BAR-NUMBER>>
+		       <PRINTC ,SP>
+		       <COND (<ZERO? ,DMODE>)
+			     (<EQUAL? ,PRIOR ,SHOWING-STATS>
+			      <HLIGHT ,H-INVERSE>)>
+		       <TELL " Status ">
+		       <HLIGHT ,H-NORMAL>
+		       <HLIGHT ,H-MONO>)>
 		<RTRUE>)
 	       (<EQUAL? .LINE 6>
 		<COND (<ZERO? ,DMODE>)
 		      (<T? ,AUTO>
-		       <HLIGHT ,H-INVERSE>
-		       <COLOR ,FORE ,BGND>)>
-		<TO-GCOLOR " Automatic ">
+		       <HLIGHT ,H-INVERSE>)>
+		<TELL " Automatic ">
+		<HLIGHT ,H-NORMAL>
+		<HLIGHT ,H-MONO>
+		<PRINTC ,SP>
 		<COND (<ZERO? ,DMODE>)
 		      (<ZERO? ,AUTO>
-		       <HLIGHT ,H-INVERSE>
-		       <COLOR ,FORE ,BGND>)>
-		<TO-GCOLOR " Off ">
+		       <HLIGHT ,H-INVERSE>)>
+		<TELL " Off ">
+		<HLIGHT ,H-NORMAL>
+		<HLIGHT ,H-MONO>
 		<RTRUE>)
 	       (T
 		<RFALSE>)>>
 	        
-<ROUTINE TO-GCOLOR (STR)
-	 <PRINT .STR>
-	 <COLOR ,GCOLOR ,BGND>
-	 <HLIGHT ,H-NORMAL>
-	 <HLIGHT ,H-MONO>
-	 <PRINTC ,SP>
-	 <COND (<AND <T? ,COLORS?>
-		     <NOT <EQUAL? ,FORE ,GCOLOR>>>
-		<HLIGHT ,H-INVERSE>)>
-	 <RFALSE>>
 
 

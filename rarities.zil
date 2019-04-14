@@ -289,8 +289,8 @@
         (LOC GLOBAL-OBJECTS)
 	(DESC "yourself")
 	(FLAGS PERSON LIVING TOUCHED NOARTICLE)
-	(SYNONYM BUCK PALACE I ME MYSELF SELF BODY)
-	(ADJECTIVE BUCK MY OWN)
+	(SYNONYM I ME MYSELF SELF BODY)
+	(ADJECTIVE MY OWN)
 	(ACTION ME-F)>
 
 <ROUTINE ME-F ("OPT" (CONTEXT <>) "AUX" (ANY <>) OBJ NXT X) 
@@ -1642,8 +1642,6 @@ By what Name shall your character be known?">
 		<DEQUEUE ,I-URGRUE>
 		<UNMAKE ,URGRUE ,LIVING>
 		<SETG LAST-MONSTER <>>
-	      ; <DEQUEUE ,I-URGRUE>
-	      ; <WINDOW ,SHOWING-ROOM>
 		<TELL 
 "leaving you gasping but alive. You stumble backwards to find the old man leaning against the wall, breathing hard, his eyes brimming with tears.|
   \"Enough,\" he cries again, gesturing towards the exit. \"Take what you want and leave this place! I cannot bring myself to murder one so virtuous. Go!\" His voice is bitter with despair. \"Leave me to wallow in Compassion.\"|
@@ -1737,8 +1735,9 @@ By what Name shall your character be known?">
 		<SET TBL <GET ,MACHINE-COLORS ,HOST>>
 		<COND (<AND <ZERO? ,COLORS?>
 			    <EQUAL? ,HOST ,ATARI-ST>>
-		       <SET TBL ,ST-MONO>)>
-		<COND (<OR <ZERO? .TBL>
+		       <SET TBL ,ST-MONO>)
+		      (<OR <ZERO? ,COLORS?>
+			   <ZERO? .TBL>
 			   <AND <SET CNT <GET .TBL 0>>
 				<L? .CNT 2>>>
 		       <NOT-AVAILABLE>
@@ -1749,12 +1748,12 @@ By what Name shall your character be known?">
 		<SETG INCOLOR <GETB .TBL 2>>
 		<SETG GCOLOR <GETB .TBL 3>>
 		<V-REFRESH>
-	        <TELL CR "[Color palette " N ,PALLETTE
+	        <TELL CR "[Color pallette " N ,PALLETTE
 		      " of " N .CNT ".]" CR>
 		<COND (<IGRTR? PALLETTE .CNT>
 		       <SETG PALLETTE 1>)>
 		<RTRUE>)
-	       (<PRSO? INTNUM>
+	     ; (<PRSO? INTNUM>
 		<COND (<ZERO? ,P-NUMBER>
 		       <COND (<IGRTR? BGND 9>
 			      <SETG BGND 1>)>
@@ -1786,7 +1785,7 @@ By what Name shall your character be known?">
 	 <DONT-UNDERSTAND>
 	 <RTRUE>>
 
-<ROUTINE SAY-COLOR (C STR "OPT" X)
+; <ROUTINE SAY-COLOR (C STR "OPT" X)
 	 <COND (<NOT <ASSIGNED? X>>
 		<V-REFRESH>)>
 	 <TELL "[" .STR " color = " <GET ,COLOR-NAMES .C> ".]" CR>
@@ -1928,7 +1927,7 @@ beyond Magick, beyond Science ...\"||">
 
 <ROUTINE V-$CREDITS ("AUX" X)
 	 <CLEAR -1>
-	 <SPLIT 23>
+	 <SPLIT <- ,HEIGHT 1>>
 	 <TO-TOP-WINDOW>
 	 <CENTER 2 33>
 	 <BIG-ZORK>
@@ -1957,29 +1956,36 @@ beyond Magick, beyond Science ...\"||">
 	 <COLOR ,FORE ,BGND>
 	 <TELL "Carl Genatossio       Jon Palace       Elizabeth Langosy">
 
-	 <CENTER 15 57>
-	 <COLOR ,INCOLOR ,BGND>
-	 <TELL 
+	 <SET X 15>
+	 <COND (<G? ,HEIGHT 23>
+		<CENTER .X 57>
+		<COLOR ,INCOLOR ,BGND>
+		<TELL 
 "Cover           Map & Book       Photography     Production">
-	 
-	 <CENTER 16 63>
-	 <COLOR ,FORE ,BGND>
-	 <TELL 
+		<INC X>
+		<CENTER .X 63>
+		<COLOR ,FORE ,BGND>
+		<TELL 
 "John Gamache    Bruce Hutchinson    Steve Grohe    Angela Crews">
+		<SET X <+ .X 2>>)>
 
-	 <CENTER 18 18>
+	 <CENTER .X 18>
 	 <COLOR ,INCOLOR ,BGND>
 	 <TELL "Micro Interpreters">
-	 <CENTER 19 47>
+	 <INC X>
+	 <CENTER .X 47>
 	 <COLOR ,FORE ,BGND>
 	 <TELL "Tim Anderson    Jon Arnold     Duncan Blanchard">
-	 <CENTER 20 34>
+	 <INC X>
+	 <CENTER .X 34>
 	 <TELL "Linde Dynneson    Andy Kaluzniacki">
+	 <SET X <+ .X 2>>
 	 
 	 <COLOR ,INCOLOR ,BGND>
-	 <CENTER 22 20>
+	 <CENTER .X 20>
 	 <TELL "Z Development System">
-	 <CENTER 23 43>
+	 <INC X>
+	 <CENTER .X 43>
 	 <COLOR ,FORE ,BGND>
 	 <TELL "Tim Anderson    Dave Lebling    Chris Reeve">
 	 <TO-BOTTOM-WINDOW>

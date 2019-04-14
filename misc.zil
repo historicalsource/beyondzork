@@ -528,11 +528,14 @@
 	 <RFALSE>>
 
 <ROUTINE DO-CURSET (Y X)
-	 <COND (<EQUAL? 1 ,CWIDTH ,CHEIGHT>
-		<CURSET .Y .X>
-		<RFALSE>)>
-	 <SET X <* .X ,CWIDTH>>
-	 <CURSET <* ,CHEIGHT .Y> .X>
+	 <COND (<NOT <EQUAL? 1 ,CWIDTH ,CHEIGHT>>
+		<DEC X>
+	 	<SET X <* .X ,CWIDTH>>
+	 	<INC X>
+	 	<DEC Y>
+	 	<SET Y <* .Y ,CHEIGHT>>
+	 	<INC Y>)>
+	 <CURSET .Y .X>
 	 <RFALSE>>
 
 <ROUTINE TO-TOP-WINDOW ("AUX" X)
@@ -1869,6 +1872,394 @@
 	       (T
 		<TELL ,XA>)>
 	 <DPRINT .O>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-LANTERN (OBJ)
+	 <COND (<IS? .OBJ ,MUNGED>
+		<TELL B ,W?BROKEN C ,SP>)
+	       (<IS? .OBJ ,LIGHTED>
+		<TELL B ,W?LIGHTED C ,SP>)
+	       (<NOT <IS? .OBJ ,MAPPED>>
+		<TELL B ,W?RUSTY C ,SP>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-SHILL (OBJ)
+	 <COND (<IS? .OBJ ,NAMED>
+		<PRINT-TABLE <GETP .OBJ ,P?NAME-TABLE>>
+		<COND (<ZERO? ,INV-PRINTING?>
+		       <RTRUE>)>
+		<TELL ,STHE>)>
+	 <COND (<IS? .OBJ ,TOUCHED>
+		<PRINTD .OBJ>
+		<RTRUE>)>
+	 <TELL "piece of " B ,W?DRIFTWOOD>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-SWORD (OBJ)
+	 <COND (<IS? .OBJ ,NAMED>
+		<PRINT-TABLE <GETP .OBJ ,P?NAME-TABLE>>
+		<COND (<ZERO? ,INV-PRINTING?>
+		       <RTRUE>)>
+		<TELL ,STHE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-AXE (OBJ)
+	 <COND (<IS? .OBJ ,NAMED>
+		<PRINT-TABLE <GETP .OBJ ,P?NAME-TABLE>>
+		<COND (<ZERO? ,INV-PRINTING?>
+		       <RTRUE>)>
+		<TELL ,STHE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-DAGGER (OBJ)
+	 <COND (<IS? .OBJ ,NAMED>
+		<PRINT-TABLE <GETP .OBJ ,P?NAME-TABLE>>
+		<COND (<ZERO? ,INV-PRINTING?>
+		       <RTRUE>)>
+		<TELL ,STHE>)>
+	 <COND (<IS? .OBJ ,MUNGED>
+		<TELL B ,W?RUSTY C ,SP>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-AMULET (OBJ)
+	 <COND (<IS? ,AMULET ,IDENTIFIED>
+		<TELL "Amulet of ">
+		<PRINT-TABLE <GETP .OBJ ,P?NAME-TABLE>>
+		<RTRUE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-PHASE (OBJ)
+	 <COND (<IS? .OBJ ,NAMED>
+		<PRINT-TABLE <GETP .OBJ ,P?NAME-TABLE>>
+		<COND (<ZERO? ,INV-PRINTING?>
+		       <RTRUE>)>
+		<TELL ,STHE>)>
+	 <COND (<HERE? APLANE>
+		<PRINTD .OBJ>
+		<RTRUE>)>
+	 <TELL 'SHAPE>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-JUNGLE-WAND (CONTEXT)
+	 <TELL CA ,DESCING " lies in a clump of grass.">
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-MOOR-WAND (CONTEXT)
+	 <TELL "The end of " A ,DESCING " sticks out of the mud.">
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-FOREST-WAND (CONTEXT)
+	 <TELL "Somebody has left " A ,DESCING " lying across the path.">
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-CELLAR-WAND (CONTEXT)
+	 <TELL CA ,DESCING " lies in a shadowy corner.">
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-TOWER-WAND (CONTEXT)
+	 <TELL CA ,DESCING>
+	 <PRINT " lies half-hidden in ">
+	 <TELL "a corner.">
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-HALL-WAND (CONTEXT)
+	 <TELL "The tip of " A ,DESCING>
+	 <PRINT " is visible in the ">
+	 <TELL "rubble.">
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-TELE-WAND (OBJ)
+	 <PRINTD .OBJ>
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL " of Sayonara">)>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-SLEEP-WAND (OBJ)
+	 <PRINTD .OBJ>
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL " of Anesthesia">)>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-IO-WAND (OBJ)
+	 <PRINTD .OBJ>
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL " of Eversion">)>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-LEV-WAND (OBJ)
+	 <PRINTD .OBJ>
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL " of Levitation">)>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-BLAST-WAND (OBJ)
+	 <PRINTD .OBJ>
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL " of Annihilation">)>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-DISPEL-WAND (OBJ)
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL "Dispel ">)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-HELM (OBJ)
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL "Pheehelm">
+		<RTRUE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-HORSE (OBJ)
+	 <COND (<IS? ,HORSE ,LIVING>
+		<TELL B ,W?GRAY>)
+	       (T
+		<TELL B ,W?DEAD>)>
+	 <TELL C ,SP 'HORSE>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-TRENCH (OBJ)
+	 <COND (<HERE? ARCH12>
+		<TELL "minxhole">
+		<RTRUE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-KEYS (OBJ "AUX" WORD)
+	 <SET WORD <GET <GETPT .OBJ ,P?ADJECTIVE> 0>>
+	 <COND (<NOT <SEE-COLOR?>>
+		<SET WORD ,W?GRAY>)>
+	 <TELL B .WORD C ,SP>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-ARROW (OBJ)
+	 <COND (<IS? .OBJ ,NAMED>
+		<PRINT-TABLE <GETP .OBJ ,P?NAME-TABLE>>
+		<COND (<ZERO? ,INV-PRINTING?>
+		       <RTRUE>)>
+		<TELL ,STHE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-CLOAK (OBJ)
+	 <PRINTD .OBJ>
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL " of Stealth">)>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-PARASOL (OBJ)
+	 <COND (<IS? .OBJ ,MUNGED>
+		<TELL B ,W?BROKEN>)
+	       (<IS? .OBJ ,OPENED>
+		<TELL B ,W?OPEN>)
+	       (T
+		<TELL B ,W?CLOSED>)>
+	 <PRINTC ,SP>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-WHISTLE (OBJ)
+	 <PRINTD .OBJ>
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL " of Summoning">)>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-BFLY (OBJ)
+	 <COND (<IS? .OBJ ,NAMED>
+		<PRINT-TABLE <GETP .OBJ ,P?NAME-TABLE>>
+		<COND (<ZERO? ,INV-PRINTING?>
+		       <RTRUE>)>
+		<TELL ,STHE>)>
+	 <COND (<NOT <IS? .OBJ ,LIVING>>
+		<TELL "dead ">)>
+	 <COND (<IS? .OBJ ,MUNGED>
+		<PRINT "caterpillar">
+		<RTRUE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-GOBLET (OBJ)
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL "Chalice of ">
+		<PRINT-TABLE <GETP .OBJ ,P?NAME-TABLE>>
+		<RTRUE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-RING (OBJ)
+	 <PRINTD .OBJ>
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL " of Shielding">)>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-SPADE (OBJ)
+	 <COND (<IS? .OBJ ,NAMED>
+		<PRINT-TABLE <GETP .OBJ ,P?NAME-TABLE>>
+		<COND (<ZERO? ,INV-PRINTING?>
+		       <RTRUE>)>
+		<TELL ,STHE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-SCABBARD (OBJ)
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL "Sheath of Grueslayer">
+		<RTRUE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-DIAMOND (OBJ)
+	 <TELL B ,W?SNOWFLAKE>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-DO-PARTAY (OBJ)
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL "scroll of Mischief">
+		<RTRUE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-BLESS-WEAPON (OBJ)
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL "scroll of Honing">
+		<RTRUE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-BLESS-ARMOR (OBJ)
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL "scroll of Protection">
+		<RTRUE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-DO-FILFRE (OBJ)
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL "scroll of Fireworks">
+		<RTRUE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-DO-GOTO (OBJ)
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL "scroll of Recall">
+		<RTRUE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-TOWER-SCROLL (CONTEXT)
+	 <TELL CA ,DESCING>
+	 <PRINT " lies half-hidden in ">
+	 <TELL "shadow.">
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-FOREST-SCROLL (CONTEXT)
+	 <TELL CA ,DESCING>
+	 <PRINT " lies forgotten in ">
+	 <TELL "the underbrush.">
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-PLAIN-SCROLL (CONTEXT)
+	 <TELL CA ,DESCING " is blowing against a clump of grass.">
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-MOOR-SCROLL (CONTEXT)
+	 <TELL CA ,DESCING " lies trodden in the mud.">
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-JUNGLE-SCROLL (CONTEXT)
+	 <TELL "The undergrowth nearly conceals " A ,DESCING C ,PER>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-RENEWAL (OBJ)
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL "scroll of Renewal">
+		<RTRUE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE RENEWAL-DESC (CONTEXT)
+	 <TELL CA ,RENEWAL " lies trampled in the dust.">
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-PALIMP (OBJ)
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL "scroll of Gating">
+		<RTRUE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-STONE (OBJ)
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL "Scrystone of ">
+		<PRINT-TABLE <GETP .OBJ ,P?NAME-TABLE>>
+		<RTRUE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-WALL (OBJ)
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<COND (<EQUAL? .OBJ ,NWALL>
+		       <TELL "Nor">)
+		      (T
+		       <TELL "Sou">)>
+		<TELL "th Wall of ">
+		<PRINT-TABLE <GETP .OBJ ,P?NAME-TABLE>>
+		<RTRUE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-IQ-POTION (OBJ)
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL "potion of Enlightenment">
+		<RTRUE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-HEALING-POTION (OBJ)
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL "potion of Healing">
+		<RTRUE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-DEATH-POTION (OBJ)
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL "potion of Death">
+		<RTRUE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-MIGHT-POTION (OBJ)
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL "potion of Might">
+		<RTRUE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-FORGET-POTION (OBJ)
+	 <COND (<IS? .OBJ ,IDENTIFIED>
+		<TELL "potion of Forgetfulness">
+		<RTRUE>)>
+	 <PRINTD .OBJ>
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-MOOR-POTION (CONTEXT)
+	 <TELL "Some luckless fool has left " A ,DESCING
+	       " in the mud.">
+	 <RTRUE>>
+
+<ROUTINE DESCRIBE-RUINS-POTION (CONTEXT)
+	 <TELL "Someone else must have been here recently. There's " 
+	       A ,DESCING>
+	 <PRINT " lying in the dust.">
 	 <RTRUE>>
 
 <ROUTINE KERBLAM ()
