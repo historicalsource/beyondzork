@@ -1,0 +1,24 @@
+Assembling Z.ZAP.14 on Friday, June 10, 1988 16:09:45
+Release: 60
+
+    64	Inserting ZFREQ.ZAP.2	   (630 bytes)
+   694	Inserting ZDAT.ZAP.12	 (53367 bytes)
+ 54061	Inserting ZPUR.ZAP.14	  (2697 bytes)
+ 56758	Inserting MISC.ZAP.9	 (13135 bytes)
+ 69893	Inserting PARSER.ZAP.8	 (10986 bytes)
+ 80879	Inserting VERBS.ZAP.8	 (21935 bytes)
+102814	Inserting EVENTS.ZAP.7	 (32756 bytes)
+135570	Inserting PEOPLE.ZAP.7	 (12047 bytes)
+147617	Inserting MONSTERS.ZAP.7	  (5880 bytes)
+153497	Inserting PLACES.ZAP.7	 (23891 bytes)
+177388	Inserting THINGS.ZAP.9	 (60524 bytes)
+237912	Inserting RARITIES.ZAP.9	 (11552 bytes)
+249464	Inserting ZSTR.ZAP.8	 (11978 bytes)
+448 objects.
+229 globals.
+1569 word vocabulary.
+
+261442 bytes (256K).
+ 54061 bytes of preload.
+ 32130 bytes of impure.
+Outputting symbol tables

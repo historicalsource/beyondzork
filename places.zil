@@ -4094,6 +4094,8 @@ THE ,BENCH " in the center of the room">
 	(DESC "Twilight")
 	(SDESC 0)
 	(FLAGS LIGHTED LOCATION)
+	(IN 0)
+	(OUT 0)
 	(NORTH 0)
 	(NE 0)
 	(EAST 0)

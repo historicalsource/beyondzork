@@ -1,0 +1,322 @@
+
+Combined ZIL Compiler Ver 2.0 (MIM)
+-----------------------------------
+Input file: SS:<BEYOND>Z.ZIL.6
+[XZIP instructions]
+
+[Object numbers assigned rooms first]
+
+Loading SS:<BEYOND>CONSTANTS.ZIL.4 and compiling it.
+Loading SS:<BEYOND>MACROS.ZIL.2 and compiling it.
+Loading SS:<BEYOND>SYNTAX.ZIL.1 and compiling it.
+Loading abstract SS:<BEYOND>MISC.ZABSTR.11.
+Loading abstract SS:<BEYOND>PARSER.ZABSTR.10.
+Loading abstract SS:<BEYOND>VERBS.ZABSTR.10.
+Loading abstract SS:<BEYOND>EVENTS.ZABSTR.9.
+Loading abstract SS:<BEYOND>PEOPLE.ZABSTR.9.
+Loading abstract SS:<BEYOND>MONSTERS.ZABSTR.9.
+Loading abstract SS:<BEYOND>PLACES.ZABSTR.10.
+ ** Warning: IN property used instead of LOC for OBJECT: OUTSIDE-PUB
+
+ ** Warning: IN property used instead of LOC for OBJECT: IN-PORT
+ ** Warning: IN property used instead of LOC for OBJECT: IN-YARD
+ ** Warning: IN property used instead of LOC for OBJECT: IN-STABLE
+
+ ** Warning: IN property used instead of LOC for OBJECT: IN-BOUTIQUE
+
+ ** Warning: IN property used instead of LOC for OBJECT: IN-PUB
+ ** Warning: IN property used instead of LOC for OBJECT: IN-KITCHEN
+
+ ** Warning: IN property used instead of LOC for OBJECT: ON-WHARF
+
+ ** Warning: IN property used instead of LOC for OBJECT: IN-THRIFF
+
+ ** Warning: IN property used instead of LOC for OBJECT: ON-TRAIL
+
+ ** Warning: IN property used instead of LOC for OBJECT: IN-CABIN
+
+ ** Warning: IN property used instead of LOC for OBJECT: IN-ACCARDI
+
+ ** Warning: IN property used instead of LOC for OBJECT: IN-WEAPON
+
+ ** Warning: IN property used instead of LOC for OBJECT: AT-GATE
+ ** Warning: IN property used instead of LOC for OBJECT: AT-DOCK
+ ** Warning: IN property used instead of LOC for OBJECT: NW-SUPPORT
+
+ ** Warning: IN property used instead of LOC for OBJECT: SW-SUPPORT
+
+ ** Warning: IN property used instead of LOC for OBJECT: SE-SUPPORT
+
+ ** Warning: IN property used instead of LOC for OBJECT: JUN0
+ ** Warning: IN property used instead of LOC for OBJECT: WORM-ROOM
+
+ ** Warning: IN property used instead of LOC for OBJECT: JUN2
+ ** Warning: IN property used instead of LOC for OBJECT: JUN3
+ ** Warning: IN property used instead of LOC for OBJECT: JUN4
+ ** Warning: IN property used instead of LOC for OBJECT: JUN5
+ ** Warning: IN property used instead of LOC for OBJECT: JUN6
+ ** Warning: IN property used instead of LOC for OBJECT: AT-FALLS
+
+ ** Warning: IN property used instead of LOC for OBJECT: SE-WALL
+ ** Warning: IN property used instead of LOC for OBJECT: SE-CAVE
+ ** Warning: IN property used instead of LOC for OBJECT: NE-CAVE
+ ** Warning: IN property used instead of LOC for OBJECT: NE-WALL
+ ** Warning: IN property used instead of LOC for OBJECT: CAVE7
+ ** Warning: IN property used instead of LOC for OBJECT: PLAIN0
+ ** Warning: IN property used instead of LOC for OBJECT: PLAIN1
+ ** Warning: IN property used instead of LOC for OBJECT: PLAIN2
+ ** Warning: IN property used instead of LOC for OBJECT: PLAIN3
+ ** Warning: IN property used instead of LOC for OBJECT: PLAIN4
+ ** Warning: IN property used instead of LOC for OBJECT: PLAIN5
+ ** Warning: IN property used instead of LOC for OBJECT: IN-FARM
+ ** Warning: IN property used instead of LOC for OBJECT: AT-MAGICK
+
+ ** Warning: IN property used instead of LOC for OBJECT: IN-MAGICK
+
+ ** Warning: IN property used instead of LOC for OBJECT: TWILIGHT
+
+ ** Warning: IN property used instead of LOC for OBJECT: FOREST1
+ ** Warning: IN property used instead of LOC for OBJECT: FOREST2
+ ** Warning: IN property used instead of LOC for OBJECT: FOREST3
+ ** Warning: IN property used instead of LOC for OBJECT: FOREST4
+ ** Warning: IN property used instead of LOC for OBJECT: FOREST5
+ ** Warning: IN property used instead of LOC for OBJECT: FOREST6
+ ** Warning: IN property used instead of LOC for OBJECT: ARCH1
+ ** Warning: IN property used instead of LOC for OBJECT: ARCH2
+ ** Warning: IN property used instead of LOC for OBJECT: ARCH3
+ ** Warning: IN property used instead of LOC for OBJECT: ARCH4
+ ** Warning: IN property used instead of LOC for OBJECT: ARCH5
+ ** Warning: IN property used instead of LOC for OBJECT: ARCH9
+ ** Warning: IN property used instead of LOC for OBJECT: ARCH10
+ ** Warning: IN property used instead of LOC for OBJECT: ARCH11
+ ** Warning: IN property used instead of LOC for OBJECT: ARCH12
+ ** Warning: IN property used instead of LOC for OBJECT: IN-FROON
+
+ ** Warning: IN property used instead of LOC for OBJECT: RUIN0
+ ** Warning: IN property used instead of LOC for OBJECT: RUIN1
+ ** Warning: IN property used instead of LOC for OBJECT: RUIN2
+ ** Warning: IN property used instead of LOC for OBJECT: RUIN3
+ ** Warning: IN property used instead of LOC for OBJECT: RUIN4
+ ** Warning: IN property used instead of LOC for OBJECT: RUIN5
+Loading abstract SS:<BEYOND>THINGS.ZABSTR.12.
+Loading abstract SS:<BEYOND>RARITIES.ZABSTR.10.
+
+Warnings: 63
+ ** Note: OBJECT has no properties: WEARING
+ ** Note: OBJECT has no properties: ROOMS
+ ** Note: OBJECT has no properties: LOCAL-GLOBALS
+ ** Note: OBJECT has no properties: GLOBAL-OBJECTS
+ ** Note: OBJECT has no properties: NULL
+ ** Note: OBJECT has no properties: INGURDY
+ ** Note: OBJECT has no properties: X-OBJECT
+ ** Note: OBJECT has no properties: HOLDING
+ ** Note: OBJECT has no properties: DUMMY-OBJECT
+ ** Note: OBJECT has no properties: UNDERPEW
+ ** Note: OBJECT has no properties: C-OBJECT
+Vocabulary: 1569
+
+Prepositions: 26
+
+ABOUT	  ASIDE	    BEFORE    FROM	ON	  THROUGH   UP
+AGAINST	  AT	    BEHIND    GO	OUT	  TO	    WITH
+APART	  AWAY	    DOWN      IN	OVER	  TOGETHER
+AROUND	  BACK	    FOR	      OFF	PAST	  UNDER
+
+Real globals: 225
+
+ABOVE		  GLASS-BOT	    P-AND	      PRSO
+AGAIN-DIR	  GLASS-TOP	    P-BUTS	      PSEUDO-PRSO?
+AGAIN-LEXV	  GOBLET-WORD	    P-CONT	      PTAB
+ALREADY		  GON		    P-DIR	      PTIMER
+ALWAYS-LIT?	  GOOD-DIRS	    P-DIR-WORD	      QCONTEXT
+AMULET-STARS	  GOSSIP	    P-DIRECTION	      QCONTEXT-ROOM
+AMULET-TIMER	  GRAPHICS?	    P-END-ON-PREP     QUAKE-TIMER
+AMULET-WORD	  GRTIMER	    P-EXCHANGE	      QUOTE-FLAG
+AND		  GRUE-KILLS	    P-GETFLAGS	      RANK
+ARCHTIMER	  GURDY-ROOM	    P-GWIMBIT	      RESERVE-INBUF
+AT-MOMENT	  GURDY-TIMER	    P-HER-OBJECT      RESERVE-LEXV
+ATIME		  HEIGHT	    P-HIM-OBJECT      RESERVE-PTR
+ATTACK-MODE	  HERE		    P-INBUF	      SAME-COORDS
+AUTO		  HOOTS		    P-IT-OBJECT	      SAY-STAT
+AUX-TABLE	  HOST		    P-ITBL	      SCARES-SEEN
+BADKEY		  HSCRIPT	    P-LASTADJ	      SCRAMBLE-LENGTH
+BAR-RES		  IDING		    P-LEN	      SFIRST
+BARWIDTH	  IMPOSSIBLY	    P-LEXV	      SHILL-TIMER
+BARX		  IMPSAY	    P-MERGE	      SIN
+BARY		  IN-DBOX	    P-MERGED	      SINTO
+BGND		  INCOLOR	    P-MOBY-FOUND      SIS
+BMODE		  INV-PRINTING?	    P-MULT?	      SON
+BOXWIDTH	  LAMP-LIFE	    P-NAM	      STAT-ROUTINE
+BRACKET		  LAST-CONNECTION   P-NAMW	      STATIC
+BRIDGE-DIR	  LAST-CRANK-DIR    P-NCN	      STATS
+BUNNIES		  LAST-MONSTER	    P-NUMBER	      STHE
+C-INTS		  LAST-MONSTER-DIR  P-OCL1	      STO
+CAN-UNDO	  LAST-PSEUDO-LOC   P-OCL2	      STORAGE
+CANT		  LAVA-TIMER	    P-OFLAG	      STORM-TIMER
+CHECKSUM	  LIT?		    P-OFW	      SWIDTH
+CHEIGHT		  LOOT		    P-OTBL	      TAB
+CHOKE		  LTHE		    P-OVTBL	      TELEWORD
+CLERIC-SCRIPT	  LYOU-SEE	    P-PADJN	      THIS-MOSS
+CLOCK-HAND	  MAGMA-TIMER	    P-PHR	      THIS-SUCKER
+CLOCK-WAIT?	  MAP-ROUTINE	    P-PNAM	      THRIFF-WON
+COLORS?		  MAPX		    P-PRSA-WORD	      TRUFFLE-TIMER
+COMMA-AND	  MAPY		    P-PRSI	      URSCRIPT
+CTHELADY	  MAX-DHEIGHT	    P-PRSO	      VERBOSITY
+CWIDTH		  MAXSTATS	    P-QWORD	      VISION
+CYOU		  MOSS-TIMER	    P-SLOCBITS	      VT100
+CYOUR		  MOSSES	    P-SYNTAX	      VT220
+DACT-SLEEP	  MOUSEDGE	    P-TABLE	      WALL-WORD
+DBOX-LINES	  MOVES		    P-THEM-OBJECT     WEST-EXIT
+DBOX-TOP	  NEW-DBOX	    P-VTBL	      WHICH-PRINTING
+DESCING		  NO-REFRESH	    P-WALK-DIR	      WIDTH
+DHEIGHT		  NOTHING	    P-WON	      WINDIR
+DMODE		  NOW-PRSI?	    P-XADJ	      WINNER
+DONT		  OBUNNIES	    P-XNAM	      WITH
+DORN-TIMER	  OLD-HERE	    PALIMP-CHARGES    XA
+DPOINTER	  ONION-TIMER	    PALLETTE	      XTHE
+DWIDTH		  OOPS-INBUF	    PERIOD	      YOU-HEAR
+EAST-EXIT	  OOPS-TABLE	    PERQ	      YOU-SEE
+FARM-ROOM	  P-ACLAUSE	    PLAIN-COUNT	      ZBOT
+FORE		  P-ACT		    POTENTIAL	      ZTOP
+FSCRIPT		  P-ADJ		    PRIOR
+GCOLOR		  P-ADJW	    PRSA
+GLANCES-AT	  P-ANAM	    PRSI
+
+Objects: 448
+
+ACCARDI		 EASEL		  LANTERN	   RENEWAL
+ALTAR		 EPOTION	  LAVA		   RFOOT
+AMULET		 EYES		  LEAFLET	   RIDDLE
+APLANE		 FARM		  LEFT		   RIGHT
+APOTION		 FARM-DOOR	  LEVEL1A	   RING
+ARCH		 FARM-WINDOW	  LEVEL1B	   RIVER
+ARCH-VOID	 FARMHOUSE	  LEVEL1C	   ROD
+ARCH1		 FBEDS		  LEVEL1D	   ROOMS
+ARCH10		 FCROWD		  LEVEL2A	   ROOT
+ARCH11		 FEET		  LEVEL2B	   ROSE
+ARCH12		 FHILLS		  LEVEL2C	   ROSE-ROOM
+ARCH2		 FLOOR		  LEVEL2D	   ROSES
+ARCH3		 FOG		  LEVEL3A	   RUG
+ARCH4		 FOOD		  LEVEL3B	   RUIN0
+ARCH5		 FOREST-EDGE	  LEVEL3C	   RUIN1
+ARCH9		 FOREST1	  LEVEL3D	   RUIN2
+ARROW		 FOREST2	  LHEMI		   RUIN3
+ASUCKER		 FOREST3	  LIGHTSHOW	   RUIN4
+AT-BOTTOM	 FOREST4	  LOCAL-GLOBALS	   RUIN5
+AT-BRINE	 FOREST5	  MAGICK-DOOR	   RUMPLE
+AT-BROOK	 FOREST6	  MAGMA-GLOW	   SACK
+AT-DOCK		 FROON		  MAILBOX	   SADDLE
+AT-FALLS	 G-CLOCK	  MAMA		   SALT
+AT-GATE		 G-EAR		  MAW		   SCABBARD
+AT-LEDGE	 G-EYE		  MAYOR		   SCALE
+AT-MAGICK	 G-HAND		  MCASE		   SCARE1
+AT-STACK	 G-MOUTH	  ME		   SCARE2
+AXE		 G-NOSE		  MINX		   SCARE3
+BABY		 GAME		  MIRROR0	   SE-CAVE
+BANDITS		 GARDEN		  MIRROR1	   SE-SUPPORT
+BARRELTOP	 GCORNER	  MIRROR2	   SE-UNDER
+BCASE		 GDIAL		  MIRROR3	   SE-WALL
+BENCH		 GGLYPH		  MIRROR4	   SEXTANT
+BFLY		 GHOUL		  MIRROR5	   SFORD
+BHORSE		 GILT		  MIRROR6	   SHAPE
+BOOT		 GLASS		  MONEY		   SHILL
+BOTTLE		 GLOBAL-HOLE	  MOOR2		   SHOE
+BOULDER		 GLOBAL-OBJECTS	  MOOR3		   SKEL-ROOM
+BOUTIQUE	 GLOBAL-ROOM	  MOOR4		   SKELETON
+BOUTIQUE-DOOR	 GLYPH		  MOOR5		   SKY
+BPOTION		 GOBLET		  MOOR6		   SLUG
+BREEZE		 GONDOLA	  MOSS		   SMOOTH
+BRIDGE		 GREAT-SEA	  MOSS-ROOM	   SNIPE
+BRINE		 GRINDER	  MOSS2		   SNOW
+BROG		 GROUND		  MOSS3		   SOUND
+BROOK		 GRUBBO		  MOUTH		   SPADE
+BSUCKER		 GRUE		  MSHOPPE	   SPENSE
+BURIN		 GUILD-HALL	  MSTAR		   SPENSE2
+BUSH		 GURDY		  N-MOOR	   SPIDER
+C-OBJECT	 GURTH		  NE-CAVE	   STABLE
+CABIN		 GWORD		  NE-WALL	   STAFF
+CABIN-DOOR	 HANDS		  NFORD		   STALL
+CAKE		 HEAD		  NGURTH	   STAVE
+CANE		 HEAP		  NOT-HERE-OBJECT  STICK
+CANVAS		 HELLO-OBJECT	  NULL		   STONE
+CARD		 HELM		  NW-SUPPORT	   STORM
+CASTLE		 HER		  NW-UNDER	   SUN
+CAVE0		 HERD		  NWALL		   SUNBEAM
+CAVE1		 HILLTOP	  NYMPH		   SUPPORT
+CAVE2		 HIM		  OAK		   SW-MOOR
+CAVE3		 HOLDING	  OAK2		   SW-SUPPORT
+CAVE4		 HORSE		  OAK3		   SW-UNDER
+CAVE6		 HOUND		  ON-BCASE	   SWALL
+CAVE7		 HUNTER		  ON-BRIDGE	   SWAMP
+CEILING		 HUNTERS	  ON-MCASE	   SWORD
+CELLAR		 IDOL-ROOM	  ON-PEAK	   TEAR
+CELLAR-DOOR	 IMPS		  ON-PIKE	   THEM
+CELLAR-STAIR	 IMPTAB		  ON-TRAIL	   THRIFF
+CHAIN		 IN-ACCARDI	  ON-WCASE	   THRONE
+CHAPEL		 IN-BOUTIQUE	  ON-WHARF	   THRONE-ROOM
+CHAPEL-DOOR	 IN-CABIN	  ONION		   TOWER
+CHEMS		 IN-CHAPEL	  ORATOR	   TOWER-BASE
+CHEST		 IN-FARM	  ORKAN		   TOWER-STEPS
+CIRCLET		 IN-FROON	  ORNAMENT	   TOWER-TOP
+CLERIC		 IN-GARDEN	  OUTSIDE-PUB	   TRACKS
+CLOAK		 IN-GAS		  OVER-JUNGLE	   TRAIL
+CLOVER		 IN-GURTH	  OWOMAN	   TRENCH
+COCO		 IN-HALL	  PACK		   TRUFFLE
+CONDUCTOR	 IN-KITCHEN	  PALIMP	   TUNIC
+CONGREG		 IN-LAIR	  PARASOL	   TUSK
+COOK		 IN-MAGICK	  PARCEL	   TWILIGHT
+CORBIES		 IN-PASTURE	  PARCHMENT	   TWISTER
+COVE		 IN-PORT	  PASSENGERS	   UHEMI
+COVESIDE	 IN-PUB		  PCROWD	   UNDERPEW
+CPOTION		 IN-SKY		  PEW		   UNDERUG
+CRAB		 IN-SPLENDOR	  PHASE		   UNICORN
+CRANK		 IN-STABLE	  PHEEBOR	   URGRUE
+CRATER		 IN-THRIFF	  PLAIN0	   VAPOR
+CRATES		 IN-WEAPON	  PLAIN1	   VELLUM
+CREVICE		 IN-YARD	  PLAIN2	   VIAL
+CROC		 INGURDY	  PLAIN3	   WALLS
+CROCO		 INNARDS	  PLAIN4	   WAND
+CROWN		 INTDIR		  PLAIN5	   WATERFALL
+CSUCKER		 INTNUM		  PLATE		   WC1
+CUBE		 IT		  PLATFORM	   WCASE
+CURTAIN		 JAR		  PLAYER	   WEAPON-DOOR
+DACT		 JBOX		  PLAZA		   WEAPON-SHOP
+DAGGER		 JUN0		  PLUME		   WEARING
+DEAD		 JUN2		  POOL		   WEEDS
+DEAD-HORSE	 JUN3		  PRAIRIE	   WEEDS2
+DEATH		 JUN4		  PRINCE	   WHARF
+DEBRIS		 JUN5		  PSEUDO-OBJECT	   WHISTLE
+DGONDOLA	 JUN6		  PUB		   WIGHT
+DIAMOND		 JUNGLE		  PUB-DOOR	   WOODS
+DIARY		 KEY1		  PUB-SIGN	   WORM
+DOCK		 KEY2		  PUBWALL	   WORM-ROOM
+DOME		 KEY3		  PUPP		   X-OBJECT
+DORN		 KITCHEN	  QUEEN		   XROADS
+DOUBLOON	 KITCHEN-JUNK	  QUICKSAND	   XTREES
+DPOTION		 KNIGHT		  QWORD		   YOU
+DUMMY-OBJECT	 LADY		  RAT		   ZBRIDGE
+DUST		 LAMPHOUSE	  RELIQUARY	   ZSIGN
+
+Properties: 47
+
+P?ACTION      P?DOWN	    P?HEAR	  P?ODOR	P?SW
+P?ADJECTIVE   P?EAST	    P?IN	  P?OUT		P?SYNONYM
+P?BEAM-DIR    P?EFFECT	    P?LAST-LOC	  P?OVERHEAD	P?THINGS
+P?BELOW	      P?EMAX	    P?LIFE	  P?READIQ	P?THIS-CASE
+P?CAPACITY    P?ENDURANCE   P?MIRROR-DIR  P?SDESC	P?UP
+P?CONTFCN     P?EXIT-STR    P?MIRROR-OBJ  P?SE		P?VALUE
+P?COORDS      P?FNUM	    P?NAME-TABLE  P?SEE-ALL	P?WEST
+P?DESCFCN     P?GENERIC	    P?NE	  P?SIZE
+P?DEXTERITY   P?GLOBAL	    P?NORTH	  P?SOUTH
+P?DNUM	      P?HABITAT	    P?NW	  P?STRENGTH
+
+Flags: 48
+
+BUOYANT	     LIGHTED	  NAMEABLE     OPENED	    SLEEPING	 TRYTAKE
+CLOTHING     LIVING	  NAMED	       PART	    STRICKEN	 USED
+CONTAINER    LOCATION	  NEUTRALIZED  PERSON	    SURFACE	 VEHICLE
+DOORLIKE     LOCKED	  NOALL	       PLACE	    SURPRISED	 VIEWED
+FEMALE	     MANUALLY	  NOARTICLE    PLURAL	    TAKEABLE	 VOWEL
+FERRIC	     MAPPED	  NODESC       PROPER	    TOOL	 WEAPON
+IDENTIFIED   MONSTER	  NORARTICLE   READABLE	    TOUCHED	 WIELDED
+INDOORS	     MUNGED	  OPENABLE     SEEN	    TRANSPARENT	 WORN

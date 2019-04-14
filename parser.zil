@@ -3371,7 +3371,7 @@ OOPS-INBUF, leaving the appropriate pointers in AGAIN-LEXV."
 			  <TELL ,CANT "see any ">
 			  <SET LEN <GETB .BPTR 2>>
 			  <WORD-PRINT .LEN <GETB .BPTR 3>>
-			  <TELL " here. [2]" CR>
+			  <TELL " here." ;" [2]" CR>
 			  <RFALSE>)>)
 		  (T
 		   <CHANGE-LEXV .PTR ,W?$BUZZ>)>

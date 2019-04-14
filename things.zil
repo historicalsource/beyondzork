@@ -46,7 +46,8 @@
 
 <ROUTINE SUN-F ("AUX" X)
 	 <COND (<OR <IS? ,HERE ,INDOORS>
-		    <PLAIN-ROOM?>>
+		    <PLAIN-ROOM?>
+		    <HERE? NE-WALL>>
 		<NOT-VISIBLE ,SUN>
 		<RFATAL>)
 	       (<VERB? EXAMINE LOOK-INSIDE>
@@ -2114,6 +2115,19 @@ THE ,BOTTLE
 		<TELL "notice a brass plate inscribed with the words ">
 		<PRINT "\"Do Not Open This Chest.\"|">
 		<RTRUE>)>
+       
+       ; "This clause added 5/20/88. -- Prof"
+
+	 <COND (<OR <IN? ,PLAYER ,ARCH>
+		    <NOT <EQUAL? ,ATIME ,PRESENT>>>
+		<TELL
+"The arch's presence keeps the chest tightly shut." CR>
+		<RTRUE>)
+	       (<AND <HERE? APLANE>
+		     <EQUAL? ,ABOVE ,OPLAIN>>
+		<PERMISSION>
+		<RTRUE>)>
+	 
 	 <TO-SPLENDOR>
 	 <RTRUE>>
 	  
@@ -10228,7 +10242,7 @@ THE ,DACT>
 		<TELL "You step off " THEO>
 		<RELOOK>
 		<DO-CHARGE?>
-		<RTRUE>)
+		<RFATAL>)
 	       (<VERB? CROSS>
 		<TELL "You walk across " THEO ,PERIOD>
 		<DO-CHARGE?>
